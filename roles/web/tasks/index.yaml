@@ -1,0 +1,7 @@
+
+- name: criando a index para o lamp
+  template:
+   src: templates/index.html 
+   dest: /var/www/html/index.html
+  notify:
+   - restart apache2 redhat 

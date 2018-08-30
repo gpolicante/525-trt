@@ -1,0 +1,46 @@
+- name: configurando servidor web 
+  hosts: all
+  tasks: 
+   - name: instalando o apache
+     package: 
+      name: apache2 
+     when: ansible_os_family == "Debian"
+
+  
+   - name: instalando o apache centos
+     package: 
+      name: httpd
+     when: ansible_os_family == "RedHat"
+     notify:
+      - parando firewalld
+
+   - name: criando a index para o mundo
+     template:
+       src: index.html
+       dest: /var/www/html/index.html 
+     notify: 
+      - restart apache2 debian
+      - restart apache2 centos
+
+  handlers:
+    
+    - name: restart apache2 debian
+      service:
+       name: apache2
+       state: restarted
+      when: ansible_os_family == "Debian"
+
+
+    - name: restart apache2 centos
+      service:
+       name: httpd
+       state: restarted
+      when: ansible_os_family == "RedHat"
+
+    - name: parando firewalld
+      service: 
+       name: firewalld
+       state: stopped
+
+
+

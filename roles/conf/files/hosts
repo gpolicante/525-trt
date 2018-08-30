@@ -1,0 +1,5 @@
+127.0.0.1	localhost
+192.168.200.1   desktop.dexter.com.br     desktop
+192.168.200.10  automation.dexter.com.br  automation
+192.168.200.50  docker.dexter.com.br      docker
+192.168.200.100 devops.dexter.com.br      devops

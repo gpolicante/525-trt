@@ -1,0 +1,8 @@
+
+- name: instalando o lamp 
+  hosts: "{{grupo}}"
+  vars: 
+   - grupo: all 
+  roles: 
+   - web 
+

@@ -1,0 +1,14 @@
+---
+# tasks file for web
+
+- name: instalando o servidor web em debian
+  include: installdeb.yaml 
+  when: ansible_os_family == "Debian"
+
+- name: instalando o servidor web em RedHat
+  include: installredhat.yaml 
+  when: ansible_os_family == "RedHat"
+
+
+- name: Criando a index
+  include: index.yaml 

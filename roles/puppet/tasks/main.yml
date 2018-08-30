@@ -1,0 +1,8 @@
+---
+# tasks file for puppet
+
+- name: instalando os repositorios 
+  include: repo.yaml
+
+- name: instalando a infra do puppet
+  include: install.yaml 

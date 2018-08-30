@@ -1,0 +1,15 @@
+---
+# handlers file for web
+
+
+- name: configurando firewalld
+  service:
+   name: firewalld
+   state: stopped 
+
+- name: restart apache2 redhat
+  service: 
+   name: httpd
+   state: started
+   enabled: yes 
+  when: ansible_os_family == "RedHat"

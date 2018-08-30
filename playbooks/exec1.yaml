@@ -1,0 +1,35 @@
+- name: instalando pacotes e adicionando usuarios para o exercicio
+  hosts: all 
+  tasks:
+   - name: instalando pacotes 
+     package:
+      name:  
+       - vim 
+       - htop
+       - cowsay 
+       - sl 
+
+   - name: adicionando usuarios
+     user: 
+      name: "{{item}}"
+      shell: '/bin/bash'
+      password: '$1$LarOHZ2j$HFQeJ.JxhGnJmLDVSosuy1' 
+     with_items: 
+      - devops
+      - developer
+      - gabriel
+
+- name: instalando somente o epel-release
+  hosts: "{{host}}"
+  vars:
+   - host: automation
+   - user: sysadmin
+  tasks:
+   - name: instalando o epel-release
+     package:
+      name: epel-release 
+
+
+
+
+ 

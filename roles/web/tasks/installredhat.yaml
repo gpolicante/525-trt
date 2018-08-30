@@ -1,0 +1,10 @@
+
+- name: instalando lamp no RedHat
+  package:
+   name: 
+    - httpd
+    - php
+    - mariadb-server
+   state: present
+  notify:
+   - configurando firewalld 
